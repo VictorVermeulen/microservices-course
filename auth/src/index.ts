@@ -14,6 +14,8 @@ import { NotFoundError } from './errors/not-found-error';
 const app = express();
 app.set('trust proxy', true);
 app.use(json());
+
+// we store the session data within a cookie (from req.session so jwt token in cookie)
 app.use(
 	cookieSession({
 		signed: false,

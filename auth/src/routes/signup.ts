@@ -28,6 +28,7 @@ router.post(
 
 		await user.save();
 
+		// Generate JWT
 		const userJwt = jwt.sign(
 			{
 				id: user.id,
