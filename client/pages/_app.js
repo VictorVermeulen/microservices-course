@@ -1,10 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import buildClient from '../api/build-client';
+import Header from '../components/Header';
 
-const AppComponent = ({ Component, pageProps }) => {
+const AppComponent = ({ Component, pageProps, currentUser }) => {
 	return (
-		<div>
-			<h1>Header!</h1>
+		<div className="container-fluid">
+			<Header currentUser={currentUser} />
 			<Component {...pageProps} />
 		</div>
 	);
@@ -14,9 +15,15 @@ AppComponent.getInitialProps = async (appContext) => {
 	const client = buildClient(appContext.ctx);
 	const { data } = await client.get('/api/users/currentuser');
 
-	console.log('👨‍👧 test', data);
+	let pageProps = {};
+	if (appContext.Component.getInitialProps) {
+		pageProps = await appContext.Component.getInitialProps(appContext.ctx);
+	}
 
-	return {};
+	return {
+		pageProps,
+		...data,
+	};
 };
 
 export default AppComponent;
