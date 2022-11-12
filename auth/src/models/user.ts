@@ -7,12 +7,14 @@ interface UserAttrs {
 	password: string;
 }
 
-// interface for usermodel
+// interface for usermodel, interface that overall collection has.
+// build method so typescript can check arguments that we use.
 interface UserModel extends mongoose.Model<UserDoc> {
 	build(attrs: UserAttrs): UserDoc;
 }
 
 // interface that describes properties of User Document (single user) - single record - can have added createdAt for example by mongoose
+// properties that a saved User has
 interface UserDoc extends mongoose.Document {
 	email: string;
 	password: string;
