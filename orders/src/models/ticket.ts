@@ -4,6 +4,7 @@ import { Order, OrderStatus } from './order';
 // this is VERY specific for order service so we canNOT have this in shared common library
 
 interface TicketAttrs {
+	id: string;
 	title: string;
 	price: number;
 }
@@ -41,7 +42,7 @@ const ticketSchema = new mongoose.Schema(
 );
 
 ticketSchema.statics.build = (attrs: TicketAttrs) => {
-	return new Ticket(attrs);
+	return new Ticket({ _id: attrs.id, title: attrs.title, price: attrs.price });
 };
 ticketSchema.methods.isReserved = async function () {
 	// this === the ticket document that we just called 'isReserved' on
