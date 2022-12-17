@@ -1,12 +1,10 @@
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
 import { app } from './app';
 import { natsWrapper } from './nats-wrapper';
 import { OrderCreatedListener } from './events/listeners/order-created-listener';
 import { OrderCancelledListener } from './events/listeners/order-cancelled-listener';
 
 const start = async () => {
-	dotenv.config();
 	if (!process.env.JWT_KEY) {
 		throw new Error('JWT_KEY must be defined');
 	}
