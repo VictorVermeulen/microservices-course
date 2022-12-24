@@ -3,7 +3,10 @@ name: tests-payments
 env:
  STRIPE_KEY: ${{ secrets.STRIPE_KEY }}
 
-on: pull_request
+on:
+ pull_request:
+  paths:
+   - 'payments/**'
 
 jobs:
  build:
