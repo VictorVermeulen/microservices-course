@@ -17,7 +17,7 @@ const LandingPage = ({ currentUser, tickets }) => {
 
 	return (
 		<div className="d-grid gap 3">
-			<h1 className="p-2">Tickets</h1>
+			<h2 className="p-2">Tickets</h2>
 			<table className="table">
 				<thead>
 					<tr>
